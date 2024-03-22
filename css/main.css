@@ -1,12 +1,21 @@
 @import url("chat-container.css");
+@import url("input-intro-container.css");
+@import url("selectstyle.css");
+
 
 
 body, html {
     height: 100%;
+    width: 100%;
+    
+    display: flex;    
     margin: 0;
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
+
+
+    justify-content: center; /*화면 중앙에 놓은다는 뜻이군*/
     align-items: center;
+
     font-family: Arial, sans-serif;
 }
 

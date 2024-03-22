@@ -1,0 +1,49 @@
+/* birthyear 입력 버튼 디자인 */
+input[type="date"]#birthyear {
+  border: 2px solid #b3b3b3; /* 테두리 색상 */
+  border-radius: 5px; /* 테두리 둥글게 */
+  padding: 10px; /* 내부 여백 */
+  font-size: 16px; /* 글꼴 크기 */
+  background-color: #ffffff; /* 배경색 */
+  color: #333; /* 글꼴 색상 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 호버 효과 */
+input[type="date"]#birthyear:hover {
+  background-color: #e8e8e8; /* 호버 시 배경색 변경 */
+  cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+/* 포커스 효과 */
+input[type="date"]#birthyear:focus {
+  border-color: #3c3; /* 포커스 시 테두리 색상 변경 */
+  outline: none; /* 기본 아웃라인 제거 */
+}
+
+
+/* birthhour 선택 버튼 디자인 */
+select#birthhour {
+    border: 2px solid #b3b3b3; /* 테두리 색상 */
+    border-radius: 5px; /* 테두리 둥글게 */
+    padding: 10px 5px; /* 내부 여백 */
+    font-size: 16px; /* 글꼴 크기 */
+    background-color: #ffffff; /* 배경색 */
+    color: #333; /* 글꼴 색상 */
+    transition: background-color 0.3s ease; /* 배경색 변경 효과 */
+    cursor: pointer; /* 커서 변경 */
+
+}
+  
+ 
+  /* 호버 효과 */
+  select#birthhour:hover {
+    background-color: #e8e8e8;
+  }
+  
+  /* 포커스 효과 */
+  select#birthhour:focus {
+    border-color: #3c3;
+    outline: none;
+  }
+  

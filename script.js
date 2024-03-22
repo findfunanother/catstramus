@@ -15,9 +15,11 @@ function start() {
 
     console.log(myDateTime);
     document.getElementById('intro').style.display = 'none';
+    document.getElementById('id-kakao-banner').style.display = 'none';
     document.getElementById('chat-container').style.display = 'flex';
+    document.getElementById('input-container').style.display = 'flex';
 
-    //displayMessage('운세에 대해 무엇이든지 물어보세요', 'assistant');
+    displayMessage('운세에 대해 무엇이든지 물어보세요', 'assistant');
 }
 
 
@@ -26,6 +28,11 @@ function start() {
 
 document.getElementById('send-text').addEventListener('click', function() {
 
+    sendMessage();
+
+    this.style.display = 'none';
+
+    /*
     var input = document.getElementById('input-text');
     var message = input.value.trim();
 
@@ -40,8 +47,92 @@ document.getElementById('send-text').addEventListener('click', function() {
 
         this.style.display = 'none';
     }
+    */
     
 });
+
+
+async function sendMessage() {
+
+    const userQuestion = document.getElementById('input-text').value;
+    if (!userQuestion.trim()) return;
+
+    displayMessage(userQuestion, 'user');
+
+    document.getElementById('input-text').value = '';
+
+    //const loadingMessageId = displayLoadingIcon('assistant');    
+
+    try {
+        const response = await fetch("https://bss7szoqr6cxg5jmuehq6ouz6u0hewym.lambda-url.ap-northeast-2.on.aws/fortunetell", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            
+            body: JSON.stringify({
+
+                myDateTime : myDateTime, 
+                userQuestion: userQuestion
+            }),
+        });
+
+ 
+        const result = await response.json();
+
+        //removeMessage(loadingMessageId);
+        displayMessage(result.assistant, 'assistant');
+
+    } catch (error) {
+        console.error("에러 발생:", error);
+        //removeMessage(loadingMessageId);
+        displayMessage('응답을 불러오는 중 문제가 발생했습니다.', 'assistant');
+
+    } 
+}
+
+
+function displayMessage(message, sender) {
+
+    const chatBox = document.getElementById('chat-box');
+
+    const messageWrapper = document.createElement('div');
+
+    messageWrapper.classList.add('message', sender);
+
+
+    const senderName = document.createElement('div');
+    senderName.classList.add('sender-name');
+    senderName.textContent = sender === 'user' ? '당신' : '캣스트라무스';
+
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+
+    messageWrapper.appendChild(senderName);
+    messageWrapper.appendChild(messageContent);
+    
+    chatBox.appendChild(messageWrapper);
+
+    if (sender === 'assistant') {
+        // 타이핑 효과 적용
+        let i = 0;
+        function typeWriter() {
+            if (i < message.length) {
+                messageContent.textContent += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50); // 타이핑 속도 조절
+            }
+        }
+        typeWriter(); // 타이핑 시작
+    } else {
+        // 사용자 메시지는 바로 표시
+        messageContent.textContent = message;
+    }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+}
+
 
 // 엔터키로 메시지 전송
 document.getElementById('input-text').addEventListener('keypress', function(e) {
@@ -50,8 +141,6 @@ document.getElementById('input-text').addEventListener('keypress', function(e) {
         //e.preventDefault();
         document.getElementById('send-text').click();
         
-
-
     }
 });
 
