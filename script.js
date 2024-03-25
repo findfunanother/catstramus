@@ -18,6 +18,7 @@ function start() {
     document.getElementById('id-kakao-banner').style.display = 'none';
     document.getElementById('chat-container').style.display = 'flex';
     document.getElementById('input-container').style.display = 'flex';
+    document.getElementById('input-text').focus();
 
     displayMessage('운세에 대해 무엇이든지 물어보세요', 'assistant');
 }
@@ -31,6 +32,8 @@ document.getElementById('send-text').addEventListener('click', function() {
     sendMessage();
 
     this.style.display = 'none';
+
+    document.getElementById('input-text').focus();    
 
     /*
     var input = document.getElementById('input-text');
@@ -114,6 +117,10 @@ function displayMessage(message, sender) {
     chatBox.appendChild(messageWrapper);
 
     if (sender === 'assistant') {
+
+
+
+
         // 타이핑 효과 적용
         let i = 0;
         function typeWriter() {
@@ -122,8 +129,16 @@ function displayMessage(message, sender) {
                 i++;
                 setTimeout(typeWriter, 50); // 타이핑 속도 조절
             }
+            else
+            {
+                messageContent.innerHTML += `<br>추가로 링크를 눌러 작은 정성을 보내주시면 더 좋은 일이 생길 것입니다 <a href="https://toss.me/josfamilly"> => 복채 보내기 </a>`;
+            }
         }
+
         typeWriter(); // 타이핑 시작
+
+
+
     } else {
         // 사용자 메시지는 바로 표시
         messageContent.textContent = message;
@@ -146,13 +161,17 @@ document.getElementById('input-text').addEventListener('keypress', function(e) {
 
 
 document.getElementById('input-text').addEventListener('input', function() {
+
     var input = this.value.trim();
     var sendBtn = document.getElementById('send-text');
     
     // 입력 값이 있으면 버튼을 보이게, 없으면 숨깁니다.
     if(input !== "") {
         sendBtn.style.display = 'block';
+        sendBtn.style.border = 'none';
+
     } else {
         sendBtn.style.display = 'none';
     }
 });
+
