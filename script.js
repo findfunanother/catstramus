@@ -14,13 +14,28 @@ function start() {
     myDateTime = birthYear + " " + hour;
 
     console.log(myDateTime);
-    document.getElementById('intro').style.display = 'none';
-    document.getElementById('id-kakao-banner').style.display = 'none';
-    document.getElementById('chat-container').style.display = 'flex';
-    document.getElementById('input-container').style.display = 'flex';
-    document.getElementById('input-text').focus();
 
-    displayMessage('운세에 대해 무엇이든지 물어보세요', 'assistant');
+
+    document.getElementById('id-input-intro-container').style.display = 'none';
+
+    document.getElementById('intro').style.height = '100%';
+    
+    document.getElementById('id-chattingpage').style.display = 'flex';
+    
+    document.getElementById('id-kakao-banner2').style.display = 'flex';
+
+
+    
+    //document.getElementById('id-kakao-banner').style.display = 'none';
+
+    //document.getElementById('chat-container').style.display = 'flex';
+    //document.getElementById('input-container').style.display = 'flex';
+
+    //document.getElementById('input-text').focus();
+
+    //displayMessage('운세에 대해 무엇이든지 물어보세요', 'assistant');
+
+    sendMessage("오늘 나의 운세를 알려줘");
 }
 
 
@@ -33,41 +48,32 @@ document.getElementById('send-text').addEventListener('click', function() {
 
     this.style.display = 'none';
 
-    document.getElementById('input-text').focus();    
-
-    /*
-    var input = document.getElementById('input-text');
-    var message = input.value.trim();
-
-    if(message !== "") {
-        var chatBox = document.getElementById('chat-box');
-
-        var newMessage = document.createElement('div');
-        newMessage.textContent = message;
-        chatBox.appendChild(newMessage);
-        chatBox.scrollTop = chatBox.scrollHeight; // 스크롤을 가장 아래로
-        input.value = ""; // 입력 필드 초기화
-
-        this.style.display = 'none';
-    }
-    */
-    
+    //document.getElementById('input-text').focus();    
+   
 });
 
 
-async function sendMessage() {
+async function sendMessage(inputText) {
 
-    const userQuestion = document.getElementById('input-text').value;
-    if (!userQuestion.trim()) return;
+    const userQuestion = inputText || document.getElementById('input-text').value;
+    if (!userQuestion.trim()) return; // 공백이 있는치 체크 
+    
+    if(!inputText){
+
+        document.getElementById('input-text').value = '';
+    }
 
     displayMessage(userQuestion, 'user');
 
-    document.getElementById('input-text').value = '';
+    const loadingMessageId = displayLoadingIcon('assistant');    
+    
+    //http://localhost:3000/fortunetell
 
-    //const loadingMessageId = displayLoadingIcon('assistant');    
+    //https://kim34adhzldpuxnhgxbqaiwfte0njupt.lambda-url.ap-northeast-2.on.aws/
 
     try {
-        const response = await fetch("https://bss7szoqr6cxg5jmuehq6ouz6u0hewym.lambda-url.ap-northeast-2.on.aws/fortunetell", {
+        const response = await fetch("https://kim34adhzldpuxnhgxbqaiwfte0njupt.lambda-url.ap-northeast-2.on.aws/fortunetell", {
+        //const response = await fetch("http://localhost:3000/fortunetell", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -83,12 +89,12 @@ async function sendMessage() {
  
         const result = await response.json();
 
-        //removeMessage(loadingMessageId);
+        removeMessage(loadingMessageId);
         displayMessage(result.assistant, 'assistant');
 
     } catch (error) {
         console.error("에러 발생:", error);
-        //removeMessage(loadingMessageId);
+        removeMessage(loadingMessageId);
         displayMessage('응답을 불러오는 중 문제가 발생했습니다.', 'assistant');
 
     } 
@@ -102,7 +108,6 @@ function displayMessage(message, sender) {
     const messageWrapper = document.createElement('div');
 
     messageWrapper.classList.add('message', sender);
-
 
     const senderName = document.createElement('div');
     senderName.classList.add('sender-name');
@@ -118,9 +123,6 @@ function displayMessage(message, sender) {
 
     if (sender === 'assistant') {
 
-
-
-
         // 타이핑 효과 적용
         let i = 0;
         function typeWriter() {
@@ -128,10 +130,13 @@ function displayMessage(message, sender) {
                 messageContent.textContent += message.charAt(i);
                 i++;
                 setTimeout(typeWriter, 50); // 타이핑 속도 조절
+
+                chatBox.scrollTop = chatBox.scrollHeight;
             }
             else
             {
-                messageContent.innerHTML += `<br>추가로 링크를 눌러 작은 정성을 보내주시면 더 좋은 일이 생길 것입니다 <a href="https://toss.me/josfamilly"> => 복채 보내기 </a>`;
+                messageContent.innerHTML += `<br><br> 애정운, 재물운 등 궁금한 것이 있으면 언제든지 물어봐 주세요. <a href="https://toss.me/josfamilly"> => 복채주기 </a>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
             }
         }
 
@@ -142,9 +147,8 @@ function displayMessage(message, sender) {
     } else {
         // 사용자 메시지는 바로 표시
         messageContent.textContent = message;
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    chatBox.scrollTop = chatBox.scrollHeight;
 
 }
 
@@ -175,3 +179,22 @@ document.getElementById('input-text').addEventListener('input', function() {
     }
 });
 
+
+function displayLoadingIcon(sender) {
+    const chatBox = document.getElementById('chat-box');
+    const messageWrapper = document.createElement('div');
+    messageWrapper.classList.add('message', sender);
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+    messageContent.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    messageWrapper.appendChild(messageContent);
+    
+    chatBox.appendChild(messageWrapper);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    return messageWrapper; // 로딩 메시지의 참조 반환
+}
+
+function removeMessage(messageElement) {
+    messageElement.remove(); // 특정 메시지 요소 제거
+}

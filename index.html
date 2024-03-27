@@ -14,12 +14,18 @@
 
   <body>
     <div id="intro" class="intro-header">
-      <img src="catstramus.png" alt="캣스트라무스" class="chat-header-image" />
+      <div id = id-input-intro-container class="input-intro-container">
 
-      <div class="input-intro-container">
+        <!-- <h1>자네... 운세 볼테냥 !~~</h1> -->
+
+        <img src="catstramus.png" alt="캣스트라무스" class="chat-header-image" />
+  
+
         <div class="input-days-container">
           <div class="label">
-            <label for="birthYear">생년월일을 선택하세요 </label>
+            <label for="birthYear" style="color: white"
+              >생년월일을 선택하세요
+            </label>
           </div>
 
           <div class="date">
@@ -29,9 +35,11 @@
 
         <div class="input-hour-container">
           <div>
-            <label for="birthhour">태어난 시간을 선택하세요 </label>
+            <label for="birthhour" style="color: white"
+              >태어난 시간을 선택하세요
+            </label>
           </div>
-          <div class = "select-wrapper">
+          <div class="select-wrapper">
             <select name="hour" id="birthhour">
               <option value="">모름</option>
               <option value="00">00</option>
@@ -64,39 +72,52 @@
         </div>
 
         <div class="startbutton">
-          <button id="id-startbutton" onclick="start()">오늘의 운세보기</button>
+          <button id="id-startbutton" onclick="start()">운세보기</button>
         </div>
-
       </div>
+
+
+      <div id="id-chattingpage" class="chattingpage-header">
+        <div id="chat-container">
+          <div id="chat-box"></div>
+        </div>
+  
+        <div id="input-container">
+          <!-- 새로운 div로 input과 button을 감쌉니다 -->
+          <input type="text" id="input-text" placeholder="메시지 입력..." />
+          <button id="send-text" style="display: none">전송</button>
+        </div>
+      </div>            
+
+      <div class="kakao-banner" id="id-kakao-banner">
+        <ins
+          class="kakao_ad_area"
+          style="display: none"
+          data-ad-unit="DAN-edbx0GJO1Z1W2Onr"
+          data-ad-width="320"
+          data-ad-height="100"
+        ></ins>
+        <script
+          type="text/javascript"
+          src="//t1.daumcdn.net/kas/static/ba.min.js"
+          async
+        ></script>
+      </div>      
+
+      <h2>@josfamilly.All Rights Reserved, powered by pingpongclub</h2>
+
+
+
     </div>
 
-    <div class="kakao-banner" id = "id-kakao-banner">
-      <ins
-        class="kakao_ad_area"
-        style="display: none"
-        data-ad-unit="DAN-USVqdeXIBpouLHUG"
-        data-ad-width="320"
-        data-ad-height="100"
-      ></ins>
-      <script
-        type="text/javascript"
-        src="//t1.daumcdn.net/kas/static/ba.min.js"
-        async
-      ></script>
-    </div>
-  </body>
 
-  <body>
-    <div id="chat-container">
-      <div id="chat-box"></div>
-    </div>
 
-    <div id="input-container">
-      <!-- 새로운 div로 input과 button을 감쌉니다 -->
-      <input type="text" id="input-text" placeholder="메시지 입력..." />
-      <button id="send-text" style="display: none">전송</button>
-    </div>
+
 
     <script src="script.js"></script>
+
   </body>
+
+
+
 </html>

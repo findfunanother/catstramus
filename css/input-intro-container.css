@@ -1,24 +1,56 @@
 
-.intro-header {
-    
-    width: 100%;
+
+
+#intro {
+ 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction:column;
     align-items: center;
-    margin-bottom: 20px; /* 이미지와 인풋들 사이의 간격 */   
+    
+    /*justify-content: center;*/
+
+     /*margin-top: 100px;*/
+
+    width: 25%;
+    height: auto;
+
+    min-width: 350px;    
+    max-width: 1024px;
+    background-color: #000000; /* 배경색 */
+
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
+
+    border-radius: 10px;
+
+    
 }
 
 
+
+.intro-header h1 {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: white;
+    font-size: 25px; /* 데스크탑 화면용 폰트 크기 */
+}
+
+.intro-header h2 {
+
+    justify-content:baseline;
+
+    /*margin-top: 0px;
+    margin-bottom: 0;*/
+    color: white;
+    font-size: 12px; /* 데스크탑 화면용 폰트 크기 */
+}
+
 .chat-header-image {
 
-    
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-    width: 100%; /* 이미지가 컨테이너 너비에 맞게 조정되도록 함 */
-    max-width: 360px; 
-    height: auto; /* 이미지의 높이가 비율을 유지하도록 조정 */
+    margin-top: 10px;
+    width: 95%; /* 이미지가 컨테이너 너비에 맞게 조정되도록 함 */
+    /*max-width: 360px; */
+    height: 100%; /* 이미지의 높이가 비율을 유지하도록 조정 */
 }
 
 .input-intro-container {
@@ -30,7 +62,7 @@
 
     width: 100%;
 
-    max-width: 360px; 
+    /*max-width: 360px;*/
 
     /*display: grid;*/
 
@@ -39,18 +71,18 @@
     
     /*margin: 20px 0; /*상하 여백 */
 
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /*border-bottom-left-radius: 10px;
+    /*border-bottom-right-radius: 10px;*/
 
     
-    background-color: #f9f9f9; /* 배경색 */
+    /*background-color: #f9f9f9; */
     
 }
 
 .input-days-container{
 
     font-size: 20px;    
-    margin: 20px;
+    margin-top: 5px;
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -59,7 +91,7 @@
 
 .input-hour-container {
     font-size: 20px;
-    margin-top: 10px;    
+    margin-top: 5px;    
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -68,14 +100,16 @@
 }
 
 
+
+
 #id-startbutton {
 
-    margin-top: 20px;    
+    margin-top: 10px;    
     padding: 12px 20px; /* 패딩 조정 */
     min-width: 90px; /* 버튼의 최소 너비 설정 */
     border-radius: 50px;
     font-size: 20px; /* 폰트 크기 */
-    background-color: #007bff;
+    background-color: #08794a;
     color: white;
     border: none;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -83,7 +117,7 @@
     outline: none;
     transition: background-color 0.2s;    
 
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 
 }
 
@@ -94,10 +128,14 @@
     justify-content: center;
     align-items: center;
 
+    width: 95%;
     min-width: 350px;
     min-height: 100px;
 
-    background-color: brown;
 
+    background-color: rgb(223, 59, 59);
+
+    margin-top: 00px;
+    margin-bottom: 00px;
 
 }
