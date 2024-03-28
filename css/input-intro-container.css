@@ -1,12 +1,8 @@
 
 body {
-    /*background-color: #f0f0f0;    */
+    background-color: #f0f0f0;    
     padding-top: 00px; /* 상단에 추가 여백을 줍니다. 필요에 따라 값을 조정하세요. */
 
-    background-image: url('/img/background.jpg'); 
-    background-repeat: repeat; /* 이미지를 타일 형태로 반복 */
-    background-position: center center; /* 이미지 위치 조정 */
-    background-size: cover; 
 
 }
 
