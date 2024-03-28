@@ -1,4 +1,14 @@
 
+body {
+    /*background-color: #f0f0f0;    */
+    padding-top: 00px; /* 상단에 추가 여백을 줍니다. 필요에 따라 값을 조정하세요. */
+
+    background-image: url('/img/background.jpg'); 
+    background-repeat: repeat; /* 이미지를 타일 형태로 반복 */
+    background-position: center center; /* 이미지 위치 조정 */
+    background-size: cover; 
+
+}
 
 
 #intro {
@@ -7,8 +17,7 @@
     flex-direction:column;
     align-items: center;
     
-    /*justify-content: center;*/
-
+    justify-content: center;
      /*margin-top: 100px;*/
 
     width: 25%;
@@ -23,25 +32,25 @@
 
     border-radius: 10px;
 
+
+    border: 2px solid #000000; 
+
     
 }
 
 .intro-header h1 {
-    margin-top: 30px;
     margin-bottom: 0;
     color: white;
-    font-size: 25px; /* 데스크탑 화면용 폰트 크기 */
+    font-size: 26px; /* 데스크탑 화면용 폰트 크기 */
 }
 
-.intro-header h2 {
-
-    justify-content:baseline;
-
-    /*margin-top: 0px;
-    margin-bottom: 0;*/
-    color: white;
-    font-size: 12px; /* 데스크탑 화면용 폰트 크기 */
+.intro-header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: rgb(250, 7, 7);
+    font-size: 16px; /* 데스크탑 화면용 폰트 크기 */
 }
+
 
 .chat-header-image {
 
@@ -84,7 +93,7 @@
     display: flex;
     flex-direction:column;
     align-items: center;
-    gap: 10px; 
+    gap: 3px; 
 }
 
 .input-hour-container {
@@ -93,11 +102,9 @@
     display: flex;
     flex-direction:column;
     align-items: center;
-    gap: 10px; 
+    gap: 3px; 
 
 }
-
-
 
 
 #id-startbutton {
@@ -106,7 +113,31 @@
     padding: 12px 20px; /* 패딩 조정 */
     min-width: 90px; /* 버튼의 최소 너비 설정 */
     border-radius: 50px;
-    font-size: 20px; /* 폰트 크기 */
+    font-size: 30px; /* 폰트 크기 */
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s;    
+
+    margin-bottom: 5px;
+}
+
+#id-initbutton {
+
+
+
+    /*box-shadow: 10px 4px #ffffff; */
+    
+    margin-top: 10px;    
+    padding: 12px 20px; /* 패딩 조정 */
+    min-width: 90px; /* 버튼의 최소 너비 설정 */
+    border-radius: 50px;
+    font-size: 30px; /* 폰트 크기 */
+    font-weight: bold;
     background-color: #007bff;
     color: white;
     border: none;
@@ -120,20 +151,39 @@
 }
 
 
+
 .kakao-banner{
 
     display: flex;
-    justify-content: center;
+    flex-direction:column;    
     align-items: center;
+    
+    justify-content: center;
 
-    width: 95%;
+
+    width: 100%;
+    height: 10%;
+
     min-width: 350px;
     min-height: 100px;
 
 
-    background-color: rgb(223, 59, 59);
+    background-color: rgb(248, 222, 222);
 
-    margin-top: 00px;
+    margin-top: 5px;
     margin-bottom: 00px;
+
+}
+
+#id-rights{
+
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+
+    /*margin-top: 0px;
+    margin-bottom: 0;*/
+    color: white;
+    font-size: 9px; /* 데스크탑 화면용 폰트 크기 */   
 
 }

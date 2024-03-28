@@ -1,5 +1,19 @@
 let myDateTime = ''
 
+function Init() {
+
+    //this.style.display = 'none';
+
+    document.getElementById('id-initbutton').style.display = 'none'
+
+    document.querySelector('.input-days-container').style.display = 'flex';
+    document.querySelector('.input-hour-container').style.display = 'flex';
+    //document.querySelector('.startbutton').style.display = 'flex';
+
+    document.getElementById('id-startbutton').style.display = 'block';
+
+    console.log("click!!");
+}
 
 function start() {
 
@@ -16,13 +30,21 @@ function start() {
     console.log(myDateTime);
 
 
-    document.getElementById('id-input-intro-container').style.display = 'none';
+    //justify-content: center;
 
     document.getElementById('intro').style.height = '100%';
+    document.getElementById('intro').style.display = 'block';
+    document.getElementById('intro').style.alignItems = 'center';
+
+
+
+    document.getElementById('id-input-intro-container').style.display = 'none';
+
     
     document.getElementById('id-chattingpage').style.display = 'flex';
     
-    document.getElementById('id-kakao-banner2').style.display = 'flex';
+    //document.body.style.padding = '30px';
+
 
 
     
@@ -135,7 +157,7 @@ function displayMessage(message, sender) {
             }
             else
             {
-                messageContent.innerHTML += `<br><br> 애정운, 재물운 등 궁금한 것이 있으면 언제든지 물어봐 주세요. <a href="https://toss.me/josfamilly"> => 복채주기 </a>`;
+                messageContent.innerHTML += `<br><br> 애정운, 재물운 등 물어볼 수 있어요. <a href="https://toss.me/josfamilly" class = "red-text"> [ 복채주기 ] </a>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
         }
